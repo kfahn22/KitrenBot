@@ -38,6 +38,9 @@ You will want to install `langchain` and `@langchain/community`. Installation of
 `npm install @google/generative-ai`
 
 - Documennts
+
+- [ChatGPT files](https://js.langchain.com/docs/integrations/document_loaders/file_loaders/chatgpt)
+
   `npm install @opensearch-project/opensearch`
 
 - Webscraper
