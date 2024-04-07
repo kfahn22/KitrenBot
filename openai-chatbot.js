@@ -59,7 +59,6 @@ const retriever = vectorStore.asRetriever({
 });
 
 // Instantiate the model
-// Instantiate the model
 const model = new ChatOpenAI({
   modelName: "gpt-3.5-turbo-1106",
   temperature: 0.2,
@@ -74,7 +73,6 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 // Tools
-
 const searchTool = new TavilySearchResults();
 const retrieverTool = createRetrieverTool(retriever, {
   name: "recursive fractal-tree",
