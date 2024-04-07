@@ -2,6 +2,14 @@
 
 This is a WIP.
 
+My experience so far is just with Ollama and Gemini. Ollama is very slow, but generally works as intented. RAG is not deterministic, though, and Ollama will return with very different responses.
+
+I have had more issues with Gemini working properly. I will give Gemini exactly what it needs to answer a question in context and it will say it is not relevant. I think
+
+OpenAI should work well, but you have to have a subscription so not so good for a tutorial series.
+
+I think adding long-term-memory using Upstash/Redis would help the bot to always return with the correct response and it remember what previous history. There is a free tier.
+
 Chatbot using [LangChain.js](https://js.langchain.com/docs/get_started/introduction)
 
 ## Tutorials

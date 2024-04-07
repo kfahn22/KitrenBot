@@ -8,9 +8,10 @@ const elevenlabs = new ElevenLabsClient({
   apiKey: process.env.ELEVEN_LABS_API_KEY,
 });
 
+// I get an error that Mark is not a valid name choice but I have it listed in my console, so I don't know what the problem is
 const audio = await elevenlabs.generate({
   voice: "Mark",
-  text: "Hello! I am Loco, and I am here to help your craete some wacky art!",
+  text: "Hello! I am ArtBot, and I like to code generative art!",
   model_id: "eleven_multilingual_v2",
 });
 
