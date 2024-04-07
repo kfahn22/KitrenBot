@@ -5,6 +5,7 @@ dotenv.config();
 
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+import { TextLoader } from "langchain/document_loaders/fs/text";
 
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
@@ -44,14 +45,13 @@ const chain = await createStuffDocumentsChain({
   llm: model,
   prompt,
 });
-c;
 
 // Can manually load a document
 // const documentA = new Document({
 //   pageContent: "",
 // });
 
-const loader = new TextLoader("src/prompt.txt");
+const loader = new TextLoader("the_black_box.txt");
 const docs = await loader.load();
 
 // Use Cheerio to scrape content from webpage and create documents
