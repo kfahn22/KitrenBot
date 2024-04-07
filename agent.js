@@ -1,22 +1,19 @@
-// https://github.com/leonvanzyl/langchain-js/blob/lesson-6/agent.js
-// The agentExecutor doesn't work with Ollama; Change to OpenAI and it should work
-
 import * as dotenv from "dotenv";
 dotenv.config();
 
 import readline from "readline";
 
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { ChatOpenAI } from "@langchain/openai";
 import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
-//import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
 import {
   ChatPromptTemplate,
   MessagesPlaceholder,
 } from "@langchain/core/prompts";
 
 import { HumanMessage, AIMessage } from "@langchain/core/messages";
-import { PlanAndExecuteAgentExecutor } from "langchain/experimental/plan_and_execute";
-import { AgentExecutor } from "langchain/agents";
+
+import { createOpenAIFunctionsAgent, AgentExecutor } from "langchain/agents";
 
 // Tool imports
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
@@ -26,6 +23,7 @@ import { createRetrieverTool } from "langchain/tools/retriever";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
+//import { OpenAIEmbeddings } from "@langchain/openai";
 
 // Create Retriever
 const loader = new CheerioWebBaseLoader("https://natureofcode.com/vectors/");
@@ -38,10 +36,8 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 const splitDocs = await splitter.splitDocuments(docs);
 
+//const embeddings = new OpenAIEmbeddings();
 const embeddings = new OllamaEmbeddings();
-// const embeddings = new HuggingFaceInferenceEmbeddings({
-//   apiKey: process.env.HUGGINGFACEHUB_API_KEY,
-// });
 
 const vectorStore = await MemoryVectorStore.fromDocuments(
   splitDocs,
@@ -53,6 +49,11 @@ const retriever = vectorStore.asRetriever({
 });
 
 // Instantiate the model
+// const model = new ChatOpenAI({
+//   modelName: "gpt-3.5-turbo-1106",
+//   temperature: 0.2,
+// });
+
 const model = new ChatOllama({
   baseUrl: "http://localhost:11434", // Default value
   model: "llama2",
@@ -69,26 +70,26 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 // Tools
-
 const searchTool = new TavilySearchResults();
 const retrieverTool = createRetrieverTool(retriever, {
-  name: "recursive fractal-tree",
+  name: "lcel_search",
   description:
-    "Use this tool when searching for information about reursive fractal trees",
+    "Use this tool when searching for information about Lanchain Expression Language (LCEL)",
 });
+
 const tools = [searchTool, retrieverTool];
 
-// const agent = await createOpenAIFunctionsAgent({
-//   llm: model,
-//   prompt,
-//   tools,
-// });
+const agent = await createOpenAIFunctionsAgent({
+  llm: model,
+  prompt,
+  tools,
+});
 
-// // Create the executor
-// const agentExecutor = new AgentExecutor({
-//   agent,
-//   tools,
-// });
+// Create the executor
+const agentExecutor = new AgentExecutor({
+  agent,
+  tools,
+});
 
 // User Input
 
