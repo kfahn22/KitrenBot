@@ -59,11 +59,10 @@ const retriever = vectorStore.asRetriever({
 });
 
 // Instantiate the model
-const model = new ChatOllama({
-  baseUrl: "http://localhost:11434", // Default value
-  model: "llama2",
-  // model: "codellama",
-  // model: "gemma",
+// Instantiate the model
+const model = new ChatOpenAI({
+  modelName: "gpt-3.5-turbo-1106",
+  temperature: 0.2,
 });
 
 // Prompt Template
@@ -84,17 +83,17 @@ const retrieverTool = createRetrieverTool(retriever, {
 });
 const tools = [searchTool, retrieverTool];
 
-// const agent = await createOpenAIFunctionsAgent({
-//   llm: model,
-//   prompt,
-//   tools,
-// });
+const agent = await createOpenAIFunctionsAgent({
+  llm: model,
+  prompt,
+  tools,
+});
 
-// // Create the executor
-// const agentExecutor = new AgentExecutor({
-//   agent,
-//   tools,
-// });
+// Create the executor
+const agentExecutor = new AgentExecutor({
+  agent,
+  tools,
+});
 
 // User Input
 
