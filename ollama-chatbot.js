@@ -1,4 +1,5 @@
 // https://github.com/leonvanzyl/langchain-js/blob/lesson-6/agent.js
+// The agentExecutor doesn't work with Ollama; Change to OpenAI and it should work
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -77,17 +78,17 @@ const retrieverTool = createRetrieverTool(retriever, {
 });
 const tools = [searchTool, retrieverTool];
 
-const agent = await createOpenAIFunctionsAgent({
-  llm: model,
-  prompt,
-  tools,
-});
+// const agent = await createOpenAIFunctionsAgent({
+//   llm: model,
+//   prompt,
+//   tools,
+// });
 
-// Create the executor
-const agentExecutor = new AgentExecutor({
-  agent,
-  tools,
-});
+// // Create the executor
+// const agentExecutor = new AgentExecutor({
+//   agent,
+//   tools,
+// });
 
 // User Input
 
