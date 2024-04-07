@@ -1,5 +1,7 @@
 # KitrenBot
 
+This is a WIP.
+
 Chatbot using [LangChain.js](https://js.langchain.com/docs/get_started/introduction)
 
 ## Tutorials
@@ -11,17 +13,33 @@ Chatbot using [LangChain.js](https://js.langchain.com/docs/get_started/introduct
 
 You will want to install `langchain` and `@langchain/community`. Installation of other packages will depend upon your needs.
 
-`npm install dotenv`
-`npm install cheerio`
-`npm install @huggingface/inference`
 `npm install langchain`
-`npm install @langchain/community`
+`npm install @langchain/community`  
 `npm install @langchain/langgraph`
-`npm install @langchain/google-genai`
-`npm install ollama`
-`npm install @opensearch-project/opensearch`
-`npm install readline`
-`npm install @upstash/redis`
+
+- Store environmental variables / chat in terminal
+  `npm install readline`
+  `npm install dotenv`
+
+- Providers
+
+`npm install @huggingface/inference`
+`npm install @langchain/openai`
+`npm install @langchain/google-genai`  
+`npm install ollama`  
+`npm install @google/generative-ai`
+
+- Documennts
+  `npm install @opensearch-project/opensearch`
+
+- Webscraper
+  `npm install cheerio`
+
+- Store chat history
+  `npm install @upstash/redis`
+
+- Audio
+  `npm install elevenlabs`
 
 ### Vector Store
 
