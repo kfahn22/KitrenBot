@@ -60,3 +60,16 @@ You will want to install `langchain` and `@langchain/community`. Installation of
 ## Documentation
 
 - [Replicate](https://js.langchain.com/docs/integrations/llms/replicate)
+
+- [Ollama](https://github.com/ollama/ollama)
+- [Plug-ins](https://github.com/ollama/ollama#extensions--plugins)
+
+
+## Other versions
+
+- codellm VSC extension
+https://github.com/timkmecl/codegpt
+
+## Python
+
+https://python.langchain.com/docs/guides/development/local_llms/

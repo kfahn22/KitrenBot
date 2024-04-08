@@ -54,10 +54,16 @@ const retriever = vectorStore.asRetriever({
 //   temperature: 0.2,
 // });
 
+// const model = await ollama.chat({
+//   model: "codellama",
+//   // messages: [
+//   //   { role: "user", content: "How can I code a fractal tree in P5.js" },
+//   // ],
+// });
 const model = new ChatOllama({
   baseUrl: "http://localhost:11434", // Default value
-  model: "llama2",
-  // model: "codellama",
+  //model: "llama2",
+  model: "codellama",
   // model: "gemma",
 });
 
