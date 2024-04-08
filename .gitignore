@@ -2,4 +2,6 @@ node_modules
 .env
 embeddings
 the_black_box.txt
-Audio/ollama-chat-vsc.txt
+Audio
+
+
