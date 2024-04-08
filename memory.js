@@ -9,7 +9,8 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
 import { ConversationChain } from "langchain/chains";
@@ -19,9 +20,30 @@ import { RunnableSequence } from "@langchain/core/runnables";
 import { BufferMemory } from "langchain/memory";
 import { UpstashRedisChatMessageHistory } from "@langchain/community/stores/message/upstash_redis";
 
-const model = new ChatOllama({
-  baseUrl: "http://localhost:11434", // Default value
-  model: "llama2",
+const safetySettings = [
+  {
+    category: "HARM_CATEGORY_HARASSMENT",
+    threshold: "BLOCK_ONLY_HIGH",
+  },
+  {
+    category: "HARM_CATEGORY_HATE_SPEECH",
+    threshold: "BLOCK_ONLY_HIGH",
+  },
+  {
+    category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+    threshold: "BLOCK_ONLY_HIGH",
+  },
+  {
+    category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+    threshold: "BLOCK_ONLY_HIGH",
+  },
+];
+
+const model = new ChatGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_API_KEY,
+  modelName: "gemini-pro",
+  maxOutputTokens: 2048,
+  safetySettings,
 });
 
 const prompt = ChatPromptTemplate.fromTemplate(`

@@ -17,6 +17,10 @@ Chatbot using [LangChain.js](https://js.langchain.com/docs/get_started/introduct
 - [LangChain JS Tutorial by Leon Van Zyl](https://www.youtube.com/playlist?list=PL4HikwTaYE0EG379sViZZ6QsFMjJ5Lfwj)
 - [Sentence Embeddings with transformers.js and UMAP](https://thecodingtrain.com/tracks/livestreams/livestreams/sentence-embeddings/clustering-sentence-embeddings)
 
+## Articles
+
+- [A Complete Guide to LangChain in JavaScript](https://medium.com/@letscodefuture/a-complete-guide-to-langchain-in-javascript-e54baff70dd8)
+
 ## Install Dependencies
 
 You will want to install `langchain` and `@langchain/community`. Installation of other packages will depend upon your needs.
@@ -63,13 +67,36 @@ You will want to install `langchain` and `@langchain/community`. Installation of
 
 - [Ollama](https://github.com/ollama/ollama)
 - [Plug-ins](https://github.com/ollama/ollama#extensions--plugins)
-
+- [API](https://github.com/ollama/ollama/blob/main/docs/api.md)
 
 ## Other versions
 
 - codellm VSC extension
-https://github.com/timkmecl/codegpt
+  https://github.com/timkmecl/codegpt
 
 ## Python
 
 https://python.langchain.com/docs/guides/development/local_llms/
+
+## Loading Docs
+
+Python fix?
+[loading docs](https://stackoverflow.com/questions/76600384/unable-to-read-text-data-file-using-textloader-from-langchain-document-loaders-l)
+
+`text_loader_kwargs={'autodetect_encoding': True}
+loader = DirectoryLoader("./new_articles/", glob="./*.txt", loader_cls=TextLoader, loader_kwargs=text_loader_kwargs)`
+
+[document transformers](https://js.langchain.com/docs/integrations/document_transformers/html-to-text
+
+## Embeddings
+
+I haven't read this b/c you need a subscription, might be useful:
+[Offline embedding with LangChain](https://medium.com/@gmarcilhacy/offline-embedding-with-langchain-4323d9376cdc)
+
+## Integration Packages
+
+To avoid conflicts, [docs](https://js.langchain.com/docs/get_started/installation#installing-integration-packages) recommended;
+
+`"overrides": {`  
+ `"@langchain/core": "0.1.5"`  
+`}`
