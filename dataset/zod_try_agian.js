@@ -75,7 +75,39 @@ async function callStructuredParser() {
 
 async function callZodOutputParser() {
   const prompt = ChatPromptTemplate.fromTemplate(`
-    Generate a hypothetical conversation with five (5) questions and five (5) answers between a user and an assistant using the following context.
+    Generate a hypothetical conversation with five (5) questions and five (5) answers between a user and an assistant using the following context.  Use the follow format as a guide:
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "The user developed a method to enhance code results using Google search."
+    },
+    {
+      "role": "user",
+      "content": "How did you enhance your code's output?"
+    },
+    {
+      "role": "assistant",
+      "content": "When I did this, I thought, 'You know what? I could use Google searches as a way to work out which words are the most like a word.' So, I wrote a little cheeky script that would take every single word from all the responses I had out of my original code, Google it, and then record how many responses popped up when you searched for that word."
+    },
+    {
+      "role": "user",
+      "content": "Did you use this method for anything else?"
+    },
+    {
+      "role": "assistant",
+      "content": "I could also use this Google search record-the-number-of-results technique to deal with the anagram problem because some of the solutions I had had words in them where I'd excluded an anagram that had the same letters and that might be a better word. So, I also automatically googled every single anagram of every word from every solution and then picked the one with the highest number of Google results to include that in the official charts."
+    },
+    {
+      "role": "user",
+      "content": "What adjustments did you make afterwards?"
+    },
+    {
+      "role": "assistant",
+      "content": "I then removed all the ones with 'fluid extract' because apparently, that's just a step too far. Of the remaining 68..."
+    }
+  ]
+}
     Formatting Instructions: {format_instructions}
     Context: {context}
     `);
