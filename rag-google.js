@@ -42,7 +42,7 @@ const chain = await createStuffDocumentsChain({
   llm: model,
   prompt,
 });
-c;
+
 // Manually create documents
 // const documentA = new Document({
 //   pageContent:
@@ -54,7 +54,7 @@ c;
 // });
 
 // Use Cheerio to scrape content from webpage and create documents
-const loader = new CheerioWebBaseLoader("https://natureofcode.com/vectors/");
+const loader = new CheerioWebBaseLoader("https://arxiv.org/pdf/1810.04646.pdf");
 const docs = await loader.load();
 
 // Text Splitter
@@ -96,7 +96,7 @@ const retrievalChain = await createRetrievalChain({
 
 const response = await retrievalChain.invoke({
   input:
-    "Can you tell me how to code a bouncing ball with no vectors in P5.js?",
+    "Can you provide the code to create a simulation of the lamb-oseen vortex using mathematical marbling?",
 });
 
 console.log(response);

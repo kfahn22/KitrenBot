@@ -26,7 +26,9 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";
 //import { OpenAIEmbeddings } from "@langchain/openai";
 
 // Create Retriever
-const loader = new CheerioWebBaseLoader("https://natureofcode.com/vectors/");
+const loader = new CheerioWebBaseLoader(
+  "https://p5js.org/examples/motion-bounce.html"
+);
 const docs = await loader.load();
 
 const splitter = new RecursiveCharacterTextSplitter({
@@ -63,8 +65,9 @@ const retriever = vectorStore.asRetriever({
 const model = new ChatOllama({
   baseUrl: "http://localhost:11434", // Default value
   //model: "llama2",
-  model: "codellama",
-  // model: "gemma",
+  //model: "codellama",
+  model: "gemma",
+  //model: "mixtrel"
 });
 
 // Prompt Template
@@ -78,9 +81,8 @@ const prompt = ChatPromptTemplate.fromMessages([
 // Tools
 const searchTool = new TavilySearchResults();
 const retrieverTool = createRetrieverTool(retriever, {
-  name: "lcel_search",
-  description:
-    "Use this tool when searching for information about Lanchain Expression Language (LCEL)",
+  name: "P5.js",
+  description: "Use this tool when searching for information about coding",
 });
 
 const tools = [searchTool, retrieverTool];

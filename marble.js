@@ -35,7 +35,7 @@ const model = new ChatGoogleGenerativeAI({
 
 // Create prompt
 const prompt = ChatPromptTemplate.fromTemplate(
-  `You are an artificial intellegence based on the character Kitren in the book "The Black Box."  You should respond in the same lexicon that Kitren uses. Do not respond to other characters in the book.  Use proper English spelling: 
+  `You are an expert in creating generative art using P5.js. Use the following to help answer the question.
   {context}
   Question: {input}`
 );
@@ -90,7 +90,8 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({
-  input: "Hello how are you?",
+  input:
+    "Can you provide the code to create a simulation of the lamb-oseen vortex using mathematical marbling?",
 });
 
 console.log(response);

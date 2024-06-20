@@ -23,7 +23,7 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 // Instantiate Model
 const model = new ChatGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY,
-  modelName: "gemini-pro",
+  modelName: "",
   maxOutputTokens: 2048,
   safetySettings: [
     {
@@ -51,12 +51,12 @@ const chain = await createStuffDocumentsChain({
 //   pageContent: "",
 // });
 
-// const loader = new TextLoader("the_black_box.txt");
-// const docs = await loader.load();
+const loader = new TextLoader("the_black_box.txt");
+const docs = await loader.load();
 
 // Use Cheerio to scrape content from webpage and create documents
-const loader = new CheerioWebBaseLoader("https://arxiv.org/pdf/1810.04646.pdf");
-const docs = await loader.load();
+// const loader = new CheerioWebBaseLoader("https://natureofcode.com/vectors/");
+// const docs = await loader.load();
 
 // Text Splitter
 const splitter = new RecursiveCharacterTextSplitter({
@@ -90,7 +90,7 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({
-  input: "Hello how are you?",
+  input: "Hello, how are you?",
 });
 
 console.log(response);

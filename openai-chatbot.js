@@ -13,7 +13,7 @@ import readline from "readline";
 import { ChatOpenAI } from "@langchain/openai";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
-//import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
+import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
 import {
   ChatPromptTemplate,
   MessagesPlaceholder,
@@ -33,7 +33,7 @@ import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
 // Create Retriever
-const loader = new CheerioWebBaseLoader("https://natureofcode.com/vectors/");
+const loader = new CheerioWebBaseLoader("https://arxiv.org/pdf/1810.04646.pdf");
 const docs = await loader.load();
 
 const splitter = new RecursiveCharacterTextSplitter({

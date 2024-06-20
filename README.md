@@ -4,9 +4,7 @@ This is a WIP.
 
 My experience so far is just with Ollama and Gemini. Ollama is very slow, but generally works as intented. RAG is not deterministic, though, and Ollama will return with very different responses.
 
-I have had more issues with Gemini working properly. I will give Gemini exactly what it needs to answer a question in context and it will say it is not relevant. I think
-
-OpenAI should work well, but you have to have a subscription so not so good for a tutorial series.
+I have had more issues with Gemini working properly. I will give Gemini exactly what it needs to answer a question in context and it will say it is not relevant. I think OpenAI should work well, but you have to have a subscription so not so good for a tutorial series.
 
 I think adding long-term-memory using Upstash/Redis would help the bot to always return with the correct response and it remember what previous history. There is a free tier.
 
@@ -41,7 +39,7 @@ You will want to install `langchain` and `@langchain/community`. Installation of
 `npm install ollama`  
 `npm install @google/generative-ai`
 
-- Documennts
+- Documents
 
 - [ChatGPT files](https://js.langchain.com/docs/integrations/document_loaders/file_loaders/chatgpt)
 
@@ -93,10 +91,19 @@ loader = DirectoryLoader("./new_articles/", glob="./*.txt", loader_cls=TextLoade
 I haven't read this b/c you need a subscription, might be useful:
 [Offline embedding with LangChain](https://medium.com/@gmarcilhacy/offline-embedding-with-langchain-4323d9376cdc)
 
-## Integration Packages
+## Integration Packages (not sure if this is necessary)
 
 To avoid conflicts, [docs](https://js.langchain.com/docs/get_started/installation#installing-integration-packages) recommended;
 
 `"overrides": {`  
  `"@langchain/core": "0.1.5"`  
 `}`
+
+## Video / audio
+
+- [Video + Audio Extraction with Gemini](https://www.youtube.com/watch?v=7NL9_JoNNLo)
+
+## Storing embeddings
+
+[](https://js.langchain.com/docs/use_cases/code_understanding)
+[Suprabase](https://supabase.com/blog/openai-embeddings-postgres-vector)
